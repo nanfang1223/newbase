@@ -13,18 +13,23 @@ Vue.prototype.$MyAlert = MyAlert
 Vue.use(VueX)
 import 'lib-flexible'
 Vue.config.productionTip = false
-
+//下拉加载方法1
+var infiniteScroll =  require('vue-infinite-scroll');
+Vue.use(infiniteScroll)
+//刷新加载方法2
+import VueScroller from 'vue-scroller'
+Vue.use(VueScroller)
 //全局的路由导航守卫
-router.beforeEach((to, from, next) => {
-console.log(store.state,'state')
-if (store.state.userInfo || to.path == '/') {
-  next()
-} else {
-  next({
-    path: '/'
-  })
-}
-})
+// router.beforeEach((to, from, next) => {
+// console.log(store.state,'state')
+// if (store.state.userInfo || to.path == '/') {
+//   next()
+// } else {
+//   next({
+//     path: '/'
+//   })
+// }
+// })
 //刷新保存vuex的状态
 if (sessionStorage.getItem("store")) {
   //修改状态值

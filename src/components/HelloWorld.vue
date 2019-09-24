@@ -20,6 +20,8 @@
     <button @click="$router.push('/vuexs')">govuex</button>
     <button @click="$router.push('/wangluoyouhua')">网络优化</button>
     <button @click="$router.push('/imgyujiazai')">  bili学习</button>
+    <button @click="$router.push('/xiala')">  下拉加载</button>
+    <button @click="$router.push('/theTest')">  下拉加载2</button>
   </div>
 </template>
 

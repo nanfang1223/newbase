@@ -19,13 +19,18 @@
       </ul>
     </div>
     <button @click="$MyAlert('图片大小不能大于2M')">点击</button>
+    <br/><br/>
+    打电话给:0755-10086： <a href="tel:18339688018">点击拨号</a>
+    <a href="https://www.cnblogs.com/dreambin/p/9035446.html">点击查看更多</a>
+     <br/><br/>img<input type="file" accept="images/*" />
+     <br/><br/>video<input type="file" accept="video/*" />
   </div>
 </template>
 
 <script>
 /* eslint-disable no-unused-vars,eqeqeq */
 // import MyAlert from '../assets/MyAlert/index'
-import { upImg } from "../apis/path1";
+import { upImg } from "../../apis/path1";
 export default {
   name: "identity",
   props: {

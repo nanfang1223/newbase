@@ -37,5 +37,15 @@ export default new Router({
       name: 'biaodan',
       component: () => import('@/components/biaodan')
     },
+    {
+      path: '/xiala',
+      name: 'xiala',
+      component: () => import('@/components/xiala')
+    },
+    {
+      path: '/theTest',
+      name: 'theTest',
+      component: () => import('@/components/theTest')
+    },
   ]
 })
