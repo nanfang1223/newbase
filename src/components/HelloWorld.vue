@@ -22,6 +22,7 @@
     <button @click="$router.push('/imgyujiazai')">  bili学习</button>
     <button @click="$router.push('/xiala')">  下拉加载</button>
     <button @click="$router.push('/theTest')">  下拉加载2</button>
+    <button @click="$router.push('/swiper')">  轮播</button>
   </div>
 </template>
 

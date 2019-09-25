@@ -13,6 +13,11 @@ export default new Router({
       component: HelloWorld
     },
     {
+      path: '/swiper',
+      name: 'swiper',
+      component: () => import('@/components/swiper')
+    },
+    {
       path: '/vuexs',
       name: 'vuexs',
       component: () => import('@/components/vuexs')//当组建页面过多时，这种方面调用路径之后才加载组件，节省资源

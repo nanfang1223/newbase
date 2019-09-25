@@ -16,6 +16,8 @@
 </template>
 <script>
 import { getList } from "../../apis/path1";
+// import { swiper, swiperSlide } from "vue-awesome-swiper";
+require("swiper/dist/css/swiper.css");
 export default {
   name: "dada",
   data() {
@@ -36,12 +38,14 @@ export default {
         return;
       }
       let self = this;
-      this.pageSize++;
+      
       // this.getLists(this.pageSize)
       const lists = await getList({
         offset: this.pageSize,
         limit: 30
       });
+      this.pageSize++;
+      console.log(lists,'6')
       if (lists.data.data.length == 0) {
         self.noData = "没有更多数据";
         done()
@@ -58,7 +62,7 @@ export default {
     refresh: function() {
       this.pageSize++;
       this.getLists(this.pageSize)
-      
+      // console.log(111)
         this.timeout = setTimeout(() => {
           this.$refs.myscroller.finishPullToRefresh()//关闭加载动画
         }, 1500);
@@ -74,6 +78,7 @@ export default {
   },
   mounted() {
     this.getLists(0);
+    // console.log(this.$route.fullpath())
   }
 };
 </script>            
