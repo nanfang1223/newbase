@@ -45,12 +45,30 @@ export default new Router({
     {
       path: '/xiala',
       name: 'xiala',
-      component: () => import('@/components/xiala')
+      component: () => import('@/components/xiala'),
     },
     {
       path: '/theTest',
       name: 'theTest',
       component: () => import('@/components/theTest')
+    },
+    {
+      path: '/qiantaoluyou',
+      name: 'qiantaoluyou',
+      component: () => import('@/components/qiantaoluyou'),
+      redirect: '/qiantaoluyou/xialaCh',//默认子路由
+      children: [
+        {
+          path: 'xialaCh',
+          name: 'xialaCh',
+          component: () => import('@/components/qiantaoluyou/xialaCh'),
+        },
+        {
+          path: 'xialaCh2',
+          name: 'xialaCh2',
+          component: () => import('@/components/qiantaoluyou/xialaCh2'),
+        }
+      ]
     },
   ]
 })

@@ -18,11 +18,16 @@
       <!-- <button @click="adds()">点击</button> -->
     </ul>
     <button @click="$router.push('/vuexs')">govuex</button>
-    <button @click="$router.push('/wangluoyouhua')">网络优化</button>
+    <button @click="$router.push('/wangluoyouhua')">css标签bug小尝试</button>
     <button @click="$router.push('/imgyujiazai')">  bili学习</button>
     <button @click="$router.push('/xiala')">  下拉加载</button>
     <button @click="$router.push('/theTest')">  下拉加载2</button>
     <button @click="$router.push('/swiper')">  轮播</button>
+    <button @click="$router.push('/qiantaoluyou')"> 嵌套路由</button>
+    <div class="layui-progress">
+  <!-- <div class="layui-progress-bar" lay-percent="10%"></div> -->
+  <!-- vue常用插件 https://www.jianshu.com/p/050124929a18 -->
+</div>
   </div>
 </template>
 
@@ -72,6 +77,8 @@ export default {
     //////
   },
   mounted() {
+    // this.$layer.msg(1)
+    this.$toast('Hello world!')
     for (let index = 0; index < 4; index++) {
       // const element = array[index];
     }

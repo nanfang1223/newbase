@@ -4,8 +4,8 @@
       class="myScroll"
       :on-infinite="infinite"
 　　　　:on-refresh="refresh"
-　　　　:noDataText="'上拉加载更多数据'"
-　　　　loading-layer-color="red"
+　　　　:noDataText="'没有更多数据 T_T'"
+　　　　loading-layer-color="#cccccc"
 　　　　ref="myscroller">
       <!-- 项目内容 -->
       <ul>
@@ -16,7 +16,7 @@
 </template>
 <script>
 import { getList } from "../../apis/path1";
-// import { swiper, swiperSlide } from "vue-awesome-swiper";
+import { swiper, swiperSlide } from "vue-awesome-swiper";
 require("swiper/dist/css/swiper.css");
 export default {
   name: "dada",
@@ -46,6 +46,9 @@ export default {
       });
       this.pageSize++;
       console.log(lists,'6')
+      if (this.pageSize > 4) {
+        lists.data.data.length = 0
+      }
       if (lists.data.data.length == 0) {
         self.noData = "没有更多数据";
         done()
@@ -84,7 +87,7 @@ export default {
 </script>            
 <style lang="scss" scoped>
 .myScroll {
-  max-height: 600px;
+  height: 1200px!important;
   overflow-y: auto;
   ul {
     li {
@@ -93,5 +96,16 @@ export default {
       text-align: center;
     }
   }
+}
+</style>
+<style>
+._v-container>._v-content>.loading-layer>.no-data-text[data-v-ecaca2b0] {
+  height: 50px!important;
+  line-height: 50px;
+  font-size: 26px;
+}
+._v-container>._v-content>.loading-layer[data-v-ecaca2b0] {
+  height: 50px!important;
+  line-height: 50px;
 }
 </style>

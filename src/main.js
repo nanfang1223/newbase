@@ -8,6 +8,14 @@ import './common/csscommon.css'//初始化css
 import VueX from 'vuex'
 import store from '../src/store'//
 import MyAlert from '../src/assets/MyAlert/index'
+
+// import mycharts from './common/js/mychart.js'
+// import 'jquery'
+// import layer from 'vue-layer'
+// import 'vue-layer/lib/vue-layer.css'
+
+import Mint from 'mint-ui';
+Vue.use(Mint);
 // Vue.use(MyAlert)
 Vue.prototype.$MyAlert = MyAlert
 Vue.use(VueX)
@@ -17,6 +25,7 @@ Vue.config.productionTip = false
 var infiniteScroll = require('vue-infinite-scroll');
 Vue.use(infiniteScroll)
 //刷新加载方法2
+
 import VueScroller from 'vue-scroller'
 Vue.use(VueScroller)
 //刷新加载方法3

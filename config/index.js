@@ -13,6 +13,7 @@ module.exports = {
     proxyTable: {
       '/apis': {    //将www.exaple.com印射为/apis
         target: 'http://open.douyucdn.cn',  // 接口域名
+        // target: 'http://mhxy.mdqkl.top/', 
         secure: false,  // 如果是https接口，需要配置这个参数
         changeOrigin: true,  //是否跨域
         pathRewrite: {
@@ -22,8 +23,8 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    // host: '192.168.0.162',
-    host: 'localhost',// can be overwritten by process.env.HOST 默认localhost
+    host: '192.168.0.162',
+    // host: 'localhost',// can be overwritten by process.env.HOST 默认localhost
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,

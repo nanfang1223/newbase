@@ -132,9 +132,12 @@ export default {
         offset: this.page,
         limit: 30
       });
+      if (this.page > 5) {
+        lists.data.data.length = 0
+      }
       if (lists.data.data.length == 0) {
         self.noData = "没有更多数据";
-        done();
+        // done();
         return;
       }
       lists.data.data.forEach(element => {
@@ -154,7 +157,7 @@ export default {
 #myOrder {
   position: relative;
   background-color: #f5f4f4;
-  height: 100vh;
+  height: 50vh;
   overflow: hidden;
   #order_content {
     ul {
