@@ -91,6 +91,12 @@ export default {
       //action 用来提交mutation  可以进行异步函数
       // npm install npm
       //new Vuex。store()
+      // 1、可以通过git branch -r 命令查看远端库的分支情况
+      // 2、从已有的分支创建新的分支(如从master分支),创建一个dev分支 git checkout -b name
+      // 3、建立本地到远端仓库的链接 --这样代码才能提交上去 git push --set-upstream origin dev  //dev为创建分支的名字
+
+      // git 添加成员  https://jingyan.baidu.com/album/546ae185f493701149f28ce3.html?picindex=1
+
     }
 
     console.log(i)
