@@ -24,9 +24,19 @@
     <button @click="$router.push('/theTest')">  下拉加载2</button>
     <button @click="$router.push('/swiper')">  轮播</button>
     <button @click="$router.push('/qiantaoluyou')"> 嵌套路由</button>
+    <button @click="$router.push('/biaodan')"> biaodan</button>
+    <button @click="$router.push('/copy')"> 复制</button>
+    <button @click="$router.push('/swiper2')"> 无缝轮播图</button>
+    
+    
     <div class="layui-progress">
   <!-- <div class="layui-progress-bar" lay-percent="10%"></div> -->
   <!-- vue常用插件 https://www.jianshu.com/p/050124929a18 -->
+  <!-- https://www.jianshu.com/p/c4a87e1b4ef7  vue指令大全 -->
+  <!-- https://www.jianshu.com/p/e555bc60b96b vue 小技巧 -->
+  <div :class="status  ? 'sss' : 'sss c'"></div>
+  <button @click="status = !status">dianji</button>
+  <button>点击sass$width</button>
 </div>
   </div>
 </template>
@@ -34,12 +44,16 @@
 <script>
 import {dataOne} from '../apis/path1' 
 import store from '../store'
+import { Toast } from 'mint-ui';
 export default {
   name: 'HelloWorld',
   data () {
     return {
       zh: '',
-      mm: ''
+      mm: '',
+      dd: '',
+      status: true,
+      widths: '100px'
     }
   },
   // computed: {
@@ -78,6 +92,7 @@ export default {
   },
   mounted() {
     // this.$layer.msg(1)
+    // console.log(dd)
     this.$toast('Hello world!')
     for (let index = 0; index < 4; index++) {
       // const element = array[index];
@@ -96,8 +111,12 @@ export default {
       // 3、建立本地到远端仓库的链接 --这样代码才能提交上去 git push --set-upstream origin dev  //dev为创建分支的名字
 
       // git 添加成员  https://jingyan.baidu.com/album/546ae185f493701149f28ce3.html?picindex=1
+      // git https://www.liaoxuefeng.com/wiki/896043488029600/896067074338496
 
     }
+    setInterval(() => {
+      this.status = !this.status
+    },500)
 
     console.log(i)
     // this.adds()
@@ -112,6 +131,21 @@ export default {
   .input {
     width: 300px;
     height: 50px;
+  }
+  .sss {
+    $w: 200px;
+    width: $w;
+    height: 200px;
+    background-color: red;
+    transition: all 1s linear;
+    &.c {
+      // margin-top: 100px;
+      margin: {
+        top: 100px;
+        left: 100px;
+      }
+      transition: all 1s linear;
+    }
   }
 }
 </style>

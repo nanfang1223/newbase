@@ -70,5 +70,15 @@ export default new Router({
         }
       ]
     },
+    {
+      path: '/copy',
+      name: 'copy',
+      component: () => import('@/components/copy')
+    },
+    {
+      path: '/swiper2',
+      name: 'swiper2',
+      component: () => import('@/components/swiper2')
+    },
   ]
 })

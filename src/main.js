@@ -8,7 +8,7 @@ import './common/csscommon.css'//初始化css
 import VueX from 'vuex'
 import store from '../src/store'//
 import MyAlert from '../src/assets/MyAlert/index'
-
+import MyConfirm from '../src/assets/MyConfirm/index'
 // import mycharts from './common/js/mychart.js'
 // import 'jquery'
 // import layer from 'vue-layer'
@@ -18,6 +18,8 @@ import Mint from 'mint-ui';
 Vue.use(Mint);
 // Vue.use(MyAlert)
 Vue.prototype.$MyAlert = MyAlert
+Vue.prototype.$MyConfirm = MyConfirm
+// Vue.prototype.$MyConfirm = MyConfirm
 Vue.use(VueX)
 import 'lib-flexible'
 Vue.config.productionTip = false

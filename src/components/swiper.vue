@@ -1,167 +1,285 @@
 <template>
-  <div>
-    <div class="commodity">
-      <div class="container">
-        <swiper class="swiImgs" :options="swiperOption" v-if="commodity.length!=0">
-          <swiper-slide
-            v-for="(item, index) in commodity"
-            data-index="index"
-            :key="index"
-            class="item"
-          >
-            <img class="swiImg" :src="item" />
-          </swiper-slide>
+  <div id="wrapper">
+   <p id="stage">  
 
-          <div class="swiper-scrollbar"></div>//滚动条
-          <div class="swiper-button-next"></div>//下一页
-          <div class="swiper-button-prev"></div>//上一页
-          <!-- <div
-            class="swiper-pagination"
-            v-for="(item,index) in detailimages"
-            :key="index"
-            slot="pagination"
-          ></div> -->
-        </swiper>
+    <ul id="container" :style="{transform: 'rotateY('+deg+'deg)'}">  
 
-        <span class="swiText" v-if="commodity">{{imgIndex}}/{{commodity.length}}</span>
-      </div>
-    </div>
+        <li>  
+
+            <img src="@/assets/img/whlb1.png"/>  
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb2.png"/>
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb3.png"/> 
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb2.png"/> 
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb1.png"/> 
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb3.png"/>
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb1.png"/>
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb2.png"/> 
+
+        </li>  
+
+        <li>  
+
+            <img src="@/assets/img/whlb1.png"/> 
+        </li>  
+
+    </ul>  
+
+</p>  
   </div>
 </template>
 
 <script>
-import { swiper, swiperSlide } from "vue-awesome-swiper";
-
-import "swiper/dist/css/swiper.css"; //引入样式
-
 export default {
-  components: {
-    swiper,
+data() {
+return {
+deg: 40
+}
+},
+created() {
 
-    swiperSlide
-  },
-  data() {
-    var that = this
-    return {
-      commodity: [
-        "https://boweisou.oss-cn-shenzhen.aliyuncs.com/yy/images/911a7002e11608fb581fffcde05d5257.jpg",
-
-        "https://boweisou.oss-cn-shenzhen.aliyuncs.com/yy/images/2_1536049430.jpg",
-
-        "https://boweisou.oss-cn-shenzhen.aliyuncs.com/yy/images/911a7002e11608fb581fffcde05d5257.jpg"
-      ],
-
-      imgIndex: 1,
-
-      swiperOption: {
-        //是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true
-
-        notNextTick: true,
-
-        //循环
-
-        loop: true,
-
-        //设定初始化时slide的索引
-
-        initialSlide: 0,
-
-        //自动播放
-
-        autoplay: {
-          delay: 1500,
-
-          stopOnLastSlide: false,
-
-          disableOnInteraction: false
-        },
-
-        //滑动速度
-
-        speed: 800,
-
-        //滑动方向
-
-        direction: "horizontal",
-
-        //小手掌抓取滑动
-
-        grabCursor: true,
-
-        //滑动之后回调函数
-
-        on: {
-          slideChangeTransitionStart: function() {
-            that.imgIndex = this.realIndex + 1; //获取轮播图片下标索引；这里有一个坑，之前网上找到的是用activeIndex，但后来网上说的是这个realIndex，原来activeIndex是swiper2.0的；而realIndex是swiper3.0的，（使用realIndex才实现了下标索引）
-          }
-        },
-
-        //分页器设置
-
-        pagination: {
-          el: ".swiper-pagination",
-
-          clickable: true,
-
-          type: "bullets"
-        }
-      }
-    };
-  },
-  created() {
-    this.swiperOption.autoplay =
-      this.commodity.length != 1
-        ? {
-            //控制只有一张图片的时候不自动轮播
-
-            delay: 1500,
-
-            stopOnLastSlide: false,
-
-            disableOnInteraction: false
-          }
-        : false;
-  },
-  mounted() {}
-};
+},
+mounted() {
+setInterval(() => {
+this.deg = this.deg + 40
+},1000)
+}
+}
 </script>
+<style scoped lang='scss'>
+li  
 
-<style lang="scss" rel="stylesheet/less">
-.commodity {
-  background: #f5f5f5;
+{  
 
-  .container {
-    position: relative;
+    width: 128px;  
 
-    .swiText {
-      position: absolute;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .5);  
 
-      height: 0.5rem;
+    position: absolute;  
 
-      width: 0.5rem;
+    bottom: 0;  
 
-      bottom: 0.2rem;
+}  
 
-      right: 0.3rem;
+   
 
-      font-size: 0.33rem;
+li img  
 
-      color: #fff;
+{  
 
-      z-index: 10;
-    }
+    width: 128px;  
+    height: 100px;
 
-    .swiImgs {
-      width: 100%;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .5);  
 
-      .item {
-        height: 7.5rem;
+    vertical-align: middle;  
 
-        .swiImg {
-          width: 100%;
-        }
-      }
-    }
-  }
+}  
+
+   
+
+li span  
+
+{  
+
+    display: block;  
+
+    width: 128px;  
+
+    text-align: center;  
+
+    color: #333;  
+
+    font-size: 8px;  
+
+}  
+
+   
+
+#stage  
+
+{  
+
+   
+
+    width: 900px;  
+
+    min-height: 100px;  
+
+    margin-left: auto;  
+
+    margin-right: auto;  
+
+    padding: 100px 50px;  
+
+    -webkit-perspective: 1200px;  
+
+    position: relative;  
+
+}  
+
+   
+
+#container  
+
+{  
+
+    // background: url("@/assets/img/whlb1.png") no-repeat 0 0;  
+    // transform: rotateX(10deg);
+
+    margin-top: 200px;  
+
+    width: 128px;  
+
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .5);  
+
+    height: 100px;  
+
+    // margin-left: -64px;  
+
+    -webkit-transition: -webkit-transform 1s;  
+
+    transition: transform 1s;  
+
+    -webkit-transform-style: preserve-3d;  
+
+    position: absolute;  
+
+    left: 50%;  
+
+}  
+
+   
+
+li:nth-child(0)  
+
+{  
+
+    -webkit-transform: rotateY(0deg) translateZ(200px) ;  
+
+}  
+
+   
+
+li:nth-child(1)  
+
+{  
+
+    -webkit-transform: rotateY(40deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(2)  
+
+{  
+
+    -webkit-transform: rotateY(80deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(3)  
+
+{  
+
+    -webkit-transform: rotateY(120deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(4)  
+
+{  
+
+    -webkit-transform: rotateY(160deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(5)  
+
+{  
+
+    -webkit-transform: rotateY(200deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(6)  
+
+{  
+
+    -webkit-transform: rotateY(240deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(7)  
+
+{  
+
+    -webkit-transform: rotateY(280deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(8)  
+
+{  
+
+    -webkit-transform: rotateY(320deg) translateZ(200px);  
+
+}  
+
+   
+
+li:nth-child(9)  
+
+{  
+
+    -webkit-transform: rotateY(360deg) translateZ(200px);  
+
 }
 </style>

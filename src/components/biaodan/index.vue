@@ -19,6 +19,7 @@
       </ul>
     </div>
     <button @click="$MyAlert('图片大小不能大于2M')">点击</button>
+    <div @click="tanKuang()">弹框</div>
     <br/><br/>
     打电话给:0755-10086： <a href="tel:18339688018">点击拨号</a>
     <a href="https://www.cnblogs.com/dreambin/p/9035446.html">点击查看更多</a>
@@ -29,8 +30,9 @@
 
 <script>
 /* eslint-disable no-unused-vars,eqeqeq */
-// import MyAlert from '../assets/MyAlert/index'
+import MyAlert from '../../assets/MyAlert'
 import { upImg } from "../../apis/path1";
+import MyConfirm from '../../assets/MyConfirm'
 export default {
   name: "identity",
   props: {
@@ -151,6 +153,14 @@ export default {
       } else {
         alert("上传失败！");
       }
+    },
+    async tanKuang() {
+      this.$MyConfirm({
+        title: '温馨提示',
+        message2: '222',
+        message: '4444',
+        cb: () => console.log(1)
+      })
     }
   }
 };

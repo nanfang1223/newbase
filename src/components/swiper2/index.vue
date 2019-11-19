@@ -2,32 +2,48 @@
   <div>
     <div
       class="slider-stage"
-      :style="{height: '400px'}">
+      :style="{
+        width: width + 'rem',
+        height: height + 'px'
+      }"
+    >
       <ul
         ref="sli"
         class="slider"
         :style="{
                 left: lefts + 'rem',
                 transition: transitions,
-                width: dataImg.length > 1 ? (100 * (dataImg.length + 1) + '%') : (100 * dataImg.length + '%'),
-                height: '400px'
+                width: dataImg.length > 1 ? (100 * (dataImg.length + 1) + '%') : (100 * dataImg.length + '%')
               }"
       >
-        <li v-for="(item, index) in dataImg" :key="index">
-          <img :src="item.url" alt />
+        <li
+          v-for="(item, index) in dataImg"
+          :key="index"
+          :style="{
+            width: 100/ (dataImg.length + 1) + '%'
+          }"
+        >
+          <img :src="item.url" />
         </li>
-        <li v-if="dataImg.length > 1">
-          <img :src="dataImg[0].url" alt />
+        <li
+          v-if="dataImg.length > 1"
+          :style="{
+            width: 100/ (dataImg.length + 1) + '%'
+          }"
+        >
+          <img :src="dataImg[0].url" />
         </li>
       </ul>
-      <!-- <ul class="deg">
-        <span
-          v-for="(item, index1) in dataImg"
-          :key="index1"
-          :class="index1 + 1 == degIndex ? 'active' : ''"
-          @click="changeDeg(index1)">{{index1}}</span>
-          {{degIndex}}  {{index}}
-      </ul> -->
+      <ul class="deg">
+        <ul class="deg">
+          <span
+            v-for="(item, index1) in dataImg"
+            :key="index1"
+            :class="index1 + 1 == degs ? 'active' : ''"
+            @click="changeDeg(index1)"
+          ></span>
+        </ul>
+      </ul>
     </div>
   </div>
 </template>
@@ -37,25 +53,33 @@ export default {
   name: "slider",
   data() {
     return {
-      index: 1,
-      lefts: 0,
-      transitions: "",
+      index: 1, //图片下标
+      lefts: 0, //左移动
+      transitions: "", //过渡动画
       dataImg: [
-        // {
-        //   url: require("../../assets/img/whlb1.png")
-        // },
-        // {
-        //   url: require("../../assets/img/whlb2.png")
-        // },
-        // {
-        //   url: require('../../assets/img/whlb3.png')
-        // },
-        // {
-        //   url: require('../../assets/img/whlb1.png')
-        // },
+        {
+          url: require("../../assets/img/whlb1.png")
+        },
+        {
+          url: require("../../assets/img/whlb2.png")
+        },
+        {
+          url: require("../../assets/img/whlb3.png")
+        },
+        {
+          url: require("../../assets/img/homebanner1.png")
+        },
+        {
+          url: require("../../assets/img/homebanner2.png")
+        },
+        {
+          url: require("../../assets/img/homebanner3.png")
+        }
       ],
-      csetTime: "",
-      degIndex: 1
+      csetTime: "", //定时器
+      degs: 1, //导航点
+      width: "15", //轮播图的宽度
+      height: "500" //轮播图的高度
     };
   },
   created() {
@@ -68,30 +92,32 @@ export default {
           clearInterval(this.csetTime);
           return;
         }
-        this.lefts = -10 * this.index;
+        this.lefts = -this.width * this.index;
         this.transitions = "all 0.5s";
         this.index++;
-        this.degIndex = this.index
-        if (this.degIndex >= this.dataImg.length + 1) {
-          this.degIndex = 1
+        if (this.degs >= this.dataImg.length) {
+          this.degs = 1;
+        } else {
+          this.degs = this.index;
         }
-        // console.log(parseInt(-3*this.index))
-        // console.log(this.degIndex,this.index,this.dataImg.length)
-        if (-10 * this.index <= -10 * (this.dataImg.length + 1)) {
+        if (this.index >= this.dataImg.length + 1) {
           setTimeout(() => {
-            //这个setTimeout是因为left=-600px，transition有0.5s执行动画，需要等它执行完成后，再设置left=0，
-            //否则，直接跳到left=0,动画生硬，
             this.lefts = 0;
             this.transitions = "all 0s";
             this.index = 1;
-          }, 1000);
+          }, 500);
         }
-      }, 1000);
+      }, 3000);
     },
+    //点击切换图片
     changeDeg(e) {
-      this.degIndex= e + 1
-      clearInterval(this.csetTime)
-      this.autoLoop()
+      this.index = e;
+      this.degs = e + 1;
+      clearInterval(this.csetTime);
+      this.autoLoop();
+      this.lefts = -this.width * this.index;
+      this.transitions = "all 0.5s";
+      this.index++;
     }
   }
 };
@@ -206,26 +232,24 @@ img {
 </style>
 <style lang='scss' scoped>
 .slider-stage {
-  width: 10rem;
-  // height: 400px;
   background-color: rgba(134, 134, 134, 0.33);
   border: 10px grey solid;
   margin: 200px auto;
   position: relative;
   overflow: hidden;
-  position: relative;
   .slider {
     position: absolute;
+    /* width: 400%; */
     height: 100%;
     left: 0px;
     top: 0;
     li {
+      height: 100%;
       list-style: none;
       float: left;
-      height: 100%;
       img {
-        width: 10rem;
         height: 100%;
+        width: 100%;
       }
     }
   }
