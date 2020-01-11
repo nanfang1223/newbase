@@ -9,6 +9,11 @@ import VueX from 'vuex'
 import store from '../src/store'//
 import MyAlert from '../src/assets/MyAlert/index'
 import MyConfirm from '../src/assets/MyConfirm/index'
+
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI)
 // import mycharts from './common/js/mychart.js'
 // import 'jquery'
 // import layer from 'vue-layer'

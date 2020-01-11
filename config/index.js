@@ -12,7 +12,7 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/apis': {    //将www.exaple.com印射为/apis
-        target: 'http://open.douyucdn.cn',  // 接口域名
+        target: 'https://6lp5zo51gg.execute-api.cn-north-1.amazonaws.com.cn',  // 接口域名
         // target: 'http://mhxy.mdqkl.top/', 
         secure: false,  // 如果是https接口，需要配置这个参数
         changeOrigin: true,  //是否跨域

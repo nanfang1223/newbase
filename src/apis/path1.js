@@ -10,3 +10,6 @@ export const getList = data => fetch.get('api/RoomApi/live',data)
 
 //测试
 export const DLi = data => fetch.get('api/v1/order/confirmOrder',data)
+// https://6lp5zo51gg.execute-api.cn-north-1.amazonaws.com.cn/beta/docLogin
+
+export const beta = data => fetch.post('/beta/docLogin',data)

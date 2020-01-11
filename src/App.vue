@@ -25,4 +25,4 @@ export default {
 //   min-width: 1200px;//控制最小宽度为1200px
 //   overflow: auto;
 // }
-// </style>
+</style>

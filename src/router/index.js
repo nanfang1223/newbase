@@ -80,5 +80,25 @@ export default new Router({
       name: 'swiper2',
       component: () => import('@/components/swiper2')
     },
+    {
+      path: '/fzxiala',
+      name: 'fzxiala',
+      component: () => import('@/components/fzxiala')
+    },
+    {
+      path: '/suanfa',
+      name: 'suanfa',
+      component: () => import('@/components/suanfa')
+    },
+    {
+      path: '/vuehexin',
+      name: 'vuehexin',
+      component: () => import('@/components/vuehexin')
+    },
+    {
+      path: '/es6',
+      name: 'es6',
+      component: () => import('@/components/es6')
+    },
   ]
 })
